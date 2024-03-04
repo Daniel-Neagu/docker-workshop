@@ -1,0 +1,17 @@
+#compose
+version: '3.8' #specifies the syntax this compose file is written in
+
+services:
+  backend:
+    build: ./backend # Adjust the path to the backend directory
+    environment:
+      - HISTORY_FILE = /history/history.log #creates an environment variable to specify where the history.log file is
+    ports:
+      - "8001:8001" #maps the port from the computer to docker
+    volumes:
+      - ./history/history.log:/history.log #mounts the volume
+
+  frontend:
+    build: ./frontend # Adjust the path to the frontend directory
+    ports:
+      - "8000:8000" #maps the ports
